@@ -102,6 +102,7 @@ class LoaderMod(loader.Module):
                "not_unloaded": "<b>Module not unloaded.</b>",
                "requirements_failed": "<b>Requirements installation failed</b>",
                "requirements_installing": "<b>Installing requirements...</b>",
+               "scam_module": "<b>SCAM detected in the module!!!</b>",
                "requirements_restart": "<b>Requirements installed, but a restart is required</b>"}
 
     def __init__(self):
@@ -167,6 +168,9 @@ class LoaderMod(loader.Module):
                 await utils.answer(message, self.strings("no_module", message))
             return False
         r.raise_for_status()
+        if "DeleteAccountRequest" in r.content.decode("utf-8"):
+            await utils.answer(message, self.strings("scam_module", message))
+            return
         return await self.load_module(r.content.decode("utf-8"), message, module_name, url)
 
     @loader.owner
@@ -195,6 +199,9 @@ class LoaderMod(loader.Module):
         logger.debug("Loading external module...")
         try:
             doc = doc.decode("utf-8")
+            if "DeleteAccountRequest" in doc:
+                await utils.answer(message, self.strings("scam_module", message))
+                return
         except UnicodeDecodeError:
             await utils.answer(message, self.strings("bad_unicode", message))
             return
