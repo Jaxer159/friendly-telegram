@@ -66,7 +66,7 @@ def get_app(authorization_strings, key, api_token=None, create_new=True, full_ma
         if api_token is None or not create_new:
             logging.error("%r", {app: repr(app.config) for app in heroku.apps()})
             raise RuntimeError("Could not identify app!")
-        app = heroku.create_app(stack_id_or_name="heroku-18", region_id_or_name="us")
+        app = heroku.create_app(stack_id_or_name="heroku-18", region_id_or_name="eu")
         config = app.config()
     return app, config
 
