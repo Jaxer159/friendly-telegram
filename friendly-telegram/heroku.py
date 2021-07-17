@@ -77,7 +77,7 @@ def get_repo():
         repo = Repo(os.path.dirname(utils.get_base_dir()))
     except InvalidGitRepositoryError:
         repo = Repo.init(os.path.dirname(utils.get_base_dir()))
-        origin = repo.create_remote("origin", "https://gitlab.com/friendly-telegram/friendly-telegram")
+        origin = repo.create_remote("origin", "https://github.com/Jaxer159/friendly_telegram_bot")
         origin.fetch()
         repo.create_head("master", origin.refs.master)
         repo.heads.master.set_tracking_branch(origin.refs.master)
