@@ -1,4 +1,4 @@
-# Friendly Telegram Userbot Mod
+# Friendly Telegram Userbot Russian Mod
 Based on [FTG](https://gitlab.com/friendly-telegram)
 
 A fast, easy to setup telegram userbot running Python 3 which uses the [Telethon](https://github.com/LonamiWebs/Telethon/) Library.
