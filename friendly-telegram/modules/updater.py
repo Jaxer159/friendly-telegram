@@ -54,7 +54,7 @@ class UpdaterMod(loader.Module):
 
     def __init__(self):
         self.config = loader.ModuleConfig("GIT_ORIGIN_URL",
-                                          "https://github.com/Jaxer159/friendly_telegram_bot",
+                                          "https://github.com/Jaxer159/friendly-telegram",
                                           lambda m: self.strings("origin_cfg_doc", m),
                                           "AUDIO", True, lambda m: self.strings("audio_cfg_doc", m))
 
