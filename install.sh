@@ -135,7 +135,7 @@ if echo "$OSTYPE" | grep -qE '^linux-gnu.*' && [ -f '/etc/debian_version' ]; the
     if command -v sudo >/dev/null; then
       endspin "Restarting as root..."
       echo "Relaunching" >>ftg-install.log
-      sudo "$BASH" -c '. <('"$(command -v curl >/dev/null && echo 'curl -Ls' || echo 'wget -qO-')"' https://raw.githubusercontent.com/Jaxer159/friendly_telegram_bot/master/install.sh) '"$*"
+      sudo "$BASH" -c '. <('"$(command -v curl >/dev/null && echo 'curl -Ls' || echo 'wget -qO-')"' https://raw.githubusercontent.com/Jaxer159/friendly-telegram/master/install.sh) '"$*"
       exit $?
     else
       PKGMGR="true"
@@ -152,7 +152,7 @@ elif echo "$OSTYPE" | grep -qE '^linux-gnu.*' && [ -f '/etc/arch-release' ]; the
     if command -v sudo >/dev/null; then
       endspin "Restarting as root..."
       echo "Relaunching" >>ftg-install.log
-      sudo "$BASH" -c '. <('"$(command -v curl >/dev/null && echo 'curl -Ls' || echo 'wget -qO-')"' https://raw.githubusercontent.com/Jaxer159/friendly_telegram_bot/master/install.sh) '"$*"
+      sudo "$BASH" -c '. <('"$(command -v curl >/dev/null && echo 'curl -Ls' || echo 'wget -qO-')"' https://raw.githubusercontent.com/Jaxer159/friendly-telegram/master/install.sh) '"$*"
       exit $?
     else
       PKGMGR="true"
