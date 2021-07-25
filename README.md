@@ -8,23 +8,23 @@ Friendly Telegram, also known as FTG, is not your average Telegram userbot: it's
 ## Installation:
 * ### Linux computer or Termux paste this command into Termux or a terminal:
  ```sh 
-  (. <($(which curl>/dev/null&&echo curl -Ls||echo wget -qO-) https://raw.githubusercontent.com/Jaxer159/friendly_telegram_bot/master/install.sh))
+  (. <($(which curl>/dev/null&&echo curl -Ls||echo wget -qO-) https://raw.githubusercontent.com/Jaxer159/friendly-telegram/master/install.sh))
   ```
 * ### Windows (7 and higher) paste this command into Windows Powershell:
  ```sh
-  iex (New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Jaxer159/friendly_telegram_bot/master/install.ps1")
+  iex (New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Jaxer159/friendly-telegram/master/install.ps1")
   ```
 * ### Or for Heroku on Windows:
 ```sh
- iex (New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Jaxer159/friendly_telegram_bot/master/install-heroku.ps1")
+ iex (New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Jaxer159/friendly-telegram/master/install-heroku.ps1")
  ```
 * ### Mac
 ```sh
-$(which curl>/dev/null&&echo curl -LsO||echo wget -q) https://raw.githubusercontent.com/Jaxer159/friendly_telegram_bot/master/install.sh&&(. install.sh --no-web);rm install.sh
+$(which curl>/dev/null&&echo curl -LsO||echo wget -q) https://raw.githubusercontent.com/Jaxer159/friendly-telegram/master/install.sh&&(. install.sh --no-web);rm install.sh
 ```
 * ### Heroku
 ```sh
-(. <($(which curl>/dev/null&&echo curl -Ls||echo wget -qO-) https://raw.githubusercontent.com/Jaxer159/friendly_telegram_bot/master/install.sh) --heroku)
+(. <($(which curl>/dev/null&&echo curl -Ls||echo wget -qO-) https://raw.githubusercontent.com/Jaxer159/friendly-telegram/master/install.sh) --heroku)
 ```
 * ### No Web
 The web mode is enabled by default. To disable it, simply append --no-web to the parameters
