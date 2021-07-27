@@ -45,7 +45,7 @@ async def logstest(conv):
 class TestMod(loader.Module):
     """Self-tests"""
     strings = {"name": "Tester",
-               "pong": "Pong",
+               "pong": "<code>Понг: {}ms</code>",
                "bad_loglevel": ("<b>Invalid loglevel. Please refer to </b>"
                                 "<a href='https://docs.python.org/3/library/logging.html#logging-levels'>"
                                 "the docs</a><b>.</b>"),
