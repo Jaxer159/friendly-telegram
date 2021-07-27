@@ -16,7 +16,8 @@
 
 import logging
 import time
-
+from datetime import datetime
+import asyncio
 from io import BytesIO
 
 from .. import loader, utils
@@ -61,8 +62,13 @@ class TestMod(loader.Module):
     @loader.test(resp="Pong")
     @loader.unrestricted
     async def pingcmd(self, message):
-        """Does nothing"""
-        await utils.answer(message, self.strings("pong", message))
+        """Время для отправки сообщения"""
+        start = datetime.now()
+        msg = await utils.answer(message, "Измеряю...")
+        end = datetime.now()
+        ms = (end - start).microseconds / 1000
+        await asyncio.sleep(0.2)
+        await msg[0].edit(self.strings("pong", message).format(ms))
 
     @loader.test(func=dumptest)
     async def dumpcmd(self, message):
