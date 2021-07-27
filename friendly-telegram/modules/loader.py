@@ -108,7 +108,7 @@ class LoaderMod(loader.Module):
     def __init__(self):
         super().__init__()
         self.config = loader.ModuleConfig("MODULES_REPO",
-                                          "https://gitlab.com/friendly-telegram/modules-repo/-/raw/master",
+                                          "https://github.com/Jaxer159/modules-repo/raw/master",
                                           lambda m: self.strings("repo_config_doc", m))
 
     @loader.owner
