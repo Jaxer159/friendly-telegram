@@ -62,7 +62,7 @@ class TestMod(loader.Module):
     @loader.test(resp="Pong")
     @loader.unrestricted
     async def pingcmd(self, message):
-        """Время для отправки сообщения"""
+        """Время отправки сообщения"""
         start = datetime.now()
         msg = await utils.answer(message, "Измеряю...")
         end = datetime.now()
