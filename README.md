@@ -5,6 +5,12 @@ A fast, easy to setup telegram userbot running Python 3 which uses the [Telethon
 
 Friendly Telegram, also known as FTG, is not your average Telegram userbot: it's faster, can load modules dynamically and is very easy to use!
 
+### Added:
+
+1. Neofetch on heroku
+2. Default EU region on heroku
+3. New ping
+
 ## Installation:
 * ### Linux computer or Termux paste this command into Termux or a terminal:
  ```sh 
