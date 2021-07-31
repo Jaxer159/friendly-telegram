@@ -36,28 +36,28 @@ async def dumptest(conv):
 @loader.test(args=("0", "FORCE_INSECURE"))
 async def logstest(conv):
     r = await conv.get_response()
-    assert r.message == "Loading media...", r
+    assert r.message == "Загрузка медиа...", r
     r2 = await conv.get_response()
     assert r2.document, r2
 
 
 @loader.tds
 class TestMod(loader.Module):
-    """Self-tests"""
-    strings = {"name": "Tester",
+    """Тестирование бота"""
+    strings = {"name": "Тестер",
                "pong": "<code>Понг: {}ms</code>",
-               "bad_loglevel": ("<b>Invalid loglevel. Please refer to </b>"
+               "bad_loglevel": ("<b>Неверный лог-уровень. Пожалуйста, обратитесь к </b>"
                                 "<a href='https://docs.python.org/3/library/logging.html#logging-levels'>"
-                                "the docs</a><b>.</b>"),
-               "set_loglevel": "<b>Please specify verbosity as an integer or string</b>",
-               "uploading_logs": "<b>Uploading logs...</b>",
-               "no_logs": "<b>You don't have any logs at verbosity {}.</b>",
+                                "документации</a><b>.</b>"),
+               "set_loglevel": "<b>Пожалуйста, укажите уровень в виде целого числа или строки</b>",
+               "uploading_logs": "<b>Загрузка логов...</b>",
+               "no_logs": "<b>У вас нет логов на уровне {}.</b>",
                "logs_filename": "ftg-logs.txt",
-               "logs_caption": "friendly-telegram logs with verbosity {}",
-               "logs_unsafe": ("<b>Warning: running this command may reveal personal or dangerous information. "
-                               "You can write</b> <code>{}</code> <b>at the end to accept the risks</b>"),
+               "logs_caption": "Friendly-telegram логи с уровнем {}",
+               "logs_unsafe": ("<b>ПРЕДУПРЕЖДЕНИЕ: Выполнение этой команды может раскрыть личную или опасную информацию! "
+                               "Вы можете написать</b> <code>{}</code> <b>в конце, если понимаете, что делаете!</b>"),
                "logs_force": "FORCE_INSECURE",
-               "suspend_invalid_time": "<b>Invalid time to suspend</b>"}
+               "suspend_invalid_time": "<b>Неверное время заморозки</b>"}
 
     @loader.test(resp="Pong")
     @loader.unrestricted
@@ -72,7 +72,7 @@ class TestMod(loader.Module):
 
     @loader.test(func=dumptest)
     async def dumpcmd(self, message):
-        """Use in reply to get a dump of a message"""
+        """Используйте в ответ, чтобы получить дамп сообщения"""
         if not message.is_reply:
             return
         await utils.answer(message, "<code>"
@@ -80,8 +80,8 @@ class TestMod(loader.Module):
 
     @loader.test(func=logstest)
     async def logscmd(self, message):
-        """.logs <level>
-           Dumps logs. Loglevels below WARNING may contain personal info."""
+        """.logs <уровень>
+           Дампит логи. Уровни логов ниже WARNING могут содержать личную информацию."""
         args = utils.get_args(message)
         if not len(args) == 1 and not len(args) == 2:
             await utils.answer(message, self.strings("set_loglevel", message))
@@ -110,8 +110,8 @@ class TestMod(loader.Module):
 
     @loader.owner
     async def suspendcmd(self, message):
-        """.suspend <time>
-           Suspends the bot for N seconds"""
+        """.suspend <время>
+           Приостанавливает бота на N секунд"""
         # Blocks asyncio event loop, preventing ANYTHING happening (except multithread ops,
         # but they will be blocked on return).
         try:
