@@ -32,11 +32,12 @@ logger = logging.getLogger(__name__)
 class PythonMod(loader.Module):
     """Python stuff"""
     strings = {"name": "Python",
-               "evaluated": "<b>Evaluated expression:</b>\n<code>{}</code>\n<b>Return value:</b>\n<code>{}</code>",
-               "evaluate_fail": ("<b>Failed to evaluate expression:</b>\n<code>{}</code>"
-                                 "\n\n<b>Due to</b>:\n<code>{}</code>"),
-               "execute_fail": ("<b>Failed to execute expression:</b>\n<code>{}</code>"
-                                "\n\n<b>Due to:</b>\n<code>{}</code>")}
+               "evaluated": "<b>Выполненное выражение:</b>\n<code>{}</code>\n<b>Возвращено:</b>\n<code>{}</code>",
+               "evaluate_fail": ("<code>eval:</code> <b>Не удалось выполнить выражение:</b>\n<code>{}</code>"
+                                 "\n\n<b>Ошибка:</b>\n<code>{}</code>"),
+               "execute_fail": ("<code>exec:</code> <b>Не удалось выполнить выражение:</b>\n<code>{}</code>"
+                                "\n\n<b>Ошибка:</b>\n<code>{}</code>"),
+               "n_protect": "НОМЕР_СКРЫТ"}
 
     async def client_ready(self, client, db):
         self.client = client
@@ -44,8 +45,8 @@ class PythonMod(loader.Module):
 
     @loader.owner
     async def evalcmd(self, message):
-        """.eval <expression>
-           Evaluates python code"""
+        """.eval <выражение>
+           Выполняет выражение Python"""
         ret = self.strings("evaluated", message)
         try:
             it = await meval(utils.get_args_raw(message), globals(), **await self.getattrs(message))
@@ -60,8 +61,8 @@ class PythonMod(loader.Module):
 
     @loader.owner
     async def execcmd(self, message):
-        """.exec <expression>
-           Executes python code"""
+        """.exec <код>
+           Выполняет код Python"""
         try:
             await meval(utils.get_args_raw(message), globals(), **await self.getattrs(message))
         except Exception:
@@ -82,7 +83,7 @@ class PythonMod(loader.Module):
         return self.get_sub(telethon.tl.functions)
 
     def get_sub(self, it, _depth=1):
-        """Get all callable capitalised objects in an object recursively, ignoring _*"""
+        """Получить все вызываемые объекты с большой буквы в объекте рекурсивно, игнорируя _ *"""
         return {**dict(filter(lambda x: x[0][0] != "_" and x[0][0].upper() == x[0][0] and callable(x[1]),
                               it.__dict__.items())),
                 **dict(itertools.chain.from_iterable([self.get_sub(y[1], _depth + 1).items() for y in
