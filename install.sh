@@ -81,6 +81,7 @@ banner() {
 
 banner
 printf '%s\n' "The process takes around 3-7 minutes"
+printf 'FTG mod by jaxer159'
 printf '%s' "Installing now...  "
 
 ##############################################################################
