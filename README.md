@@ -7,9 +7,10 @@ Friendly Telegram, also known as FTG, is not your average Telegram userbot: it's
 
 ### Added:
 
-1. Neofetch on heroku
-2. Default EU region on heroku
-3. New ping
+1. Added Russian language in the bot and modules
+2. Neofetch on heroku
+3. Default EU region on heroku
+4. Changed ping
 
 ## Installation:
 * ### Linux computer or Termux paste this command into Termux or a terminal:
